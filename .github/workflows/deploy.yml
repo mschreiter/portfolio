@@ -6,32 +6,41 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 'latest'
-
-      - name: Install dependencies
-        run: bun install
+        uses: ./.github/workflows/setup-bun
 
       - name: Build project
-        run: bun run build
+        run: NODE_ENV=production bun run build
 
-      - name: Export static site
-        run: bun run export
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: out
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

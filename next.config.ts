@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: isProd ? `/${repoName}` : "",
   assetPrefix: isProd ? `/${repoName}/` : "",
+  reactStrictMode: true,
+  images: {
+    loader: "custom",
+    loaderFile: "./src/utils/imageLoader.ts",
+  },
 };
 
 export default nextConfig;
