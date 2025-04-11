@@ -1,4 +1,4 @@
-name: Deploy Next.js to GitHub Pages
+name: 🚀 Deploy Next.js to GitHub Pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -19,16 +19,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 🛎️ Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Bun
+      - name: ⚙️ Setup Bun
         uses: ./.github/workflows/setup-bun
 
-      - name: Build project
+      - name: 🏗️ Build project
         run: NODE_ENV=production bun run build
 
-      - name: Upload artifact
+      - name: 🧪 Run tests
+        run: bun run test
+
+      - name: 📊 Generate coverage report
+        run: bun run test --coverage
+
+      - name: 📝 Jest Coverage Report
+        if: github.event_name == 'pull_request'
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-path: ./coverage/lcov-report
+
+      - name: 📋 Test Reporter
+        if: github.ref == 'refs/heads/main'
+        uses: dorny/test-reporter@v2
+        with:
+          name: jest tests
+          path: ./coverage/jest-coverage.xml
+          reporter: jest-junit
+
+      - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
@@ -41,6 +62,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

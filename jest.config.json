@@ -12,5 +12,12 @@
     "ts-jest": {
       "useESM": true
     }
-  }
+  },
+  "reporters": [
+    "default",
+    ["jest-junit", {
+      "outputDirectory": "coverage",
+      "outputName": "jest-coverage.xml"
+    }]
+  ]
 }
