@@ -1,1 +1,5 @@
-{ "HomePage": { "title": "Hello world! Thats international" } }
+{
+  "HomePage": {
+    "title": "Hello world! Thats international"
+  }
+}
