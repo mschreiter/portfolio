@@ -1,5 +1,16 @@
 {
   "HomePage": {
-    "title": "Hello world! Thats international"
+    "title": "Hello world! That's international"
+  },
+  "Header": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "Theme": {
+    "dark": "Dark Mode",
+    "light": "Light Mode"
   }
 }

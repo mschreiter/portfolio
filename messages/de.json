@@ -1,5 +1,16 @@
 {
   "HomePage": {
     "title": "Hallo Welt! Das ist international"
+  },
+  "Header": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "experience": "Erfahrung",
+    "contact": "Kontakt"
+  },
+  "Theme": {
+    "dark": "Dunkelmodus",
+    "light": "Hellmodus"
   }
 }
