@@ -1,18 +1,18 @@
 {
   "transform": {
-    "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+    "^.+\\.(ts|tsx|js|jsx)$": ["ts-jest", {
+      "useESM": true,
+      "tsconfig": {
+        "jsx": "react-jsx"
+      }
+    }]
   },
   "testEnvironment": "jsdom",
   "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
-  "extensionsToTreatAsEsm": [".ts"],
-  "globals": {
-    "ts-jest": {
-      "useESM": true
-    }
-  },
+  "extensionsToTreatAsEsm": [".ts", ".tsx"],
   "reporters": [
     "default",
     [
@@ -22,5 +22,14 @@
         "outputName": "jest-coverage.xml"
       }
     ]
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/.next/"
+  ],
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.d.ts",
+    "!**/node_modules/**"
   ]
 }

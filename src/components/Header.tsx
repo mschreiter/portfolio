@@ -61,11 +61,12 @@ const Header = () => {
               onClick={toggleLanguageMenu}
               className="p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none flex items-center justify-center"
               aria-label="Toggle language"
+              data-testid="desktop-language-toggle"
             >
               <GlobeIcon className="h-5 w-5" />
             </button>
             {isLanguageMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-md shadow-lg py-1 z-50">
+              <div data-testid="language-menu" className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-md shadow-lg py-1 z-50">
                 {locales.map((loc) => (
                   <button
                     key={loc}
@@ -117,6 +118,7 @@ const Header = () => {
             onClick={toggleLanguageMenu}
             className="p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
             aria-label="Toggle language"
+            data-testid="mobile-language-toggle"
           >
             <GlobeIcon className="h-5 w-5" />
           </button>
@@ -125,6 +127,7 @@ const Header = () => {
           <button 
             onClick={toggleMenu}
             className="p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+            data-testid="mobile-menu-button"
           >
             {isMenuOpen ? (
               <XMarkIcon className="h-6 w-6" />
@@ -137,7 +140,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+        <div data-testid="mobile-menu" className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
           <div className="container mx-auto px-4 py-2">
             <nav className="flex flex-col space-y-3 py-3">
               <Link 
@@ -182,7 +185,7 @@ const Header = () => {
       
       {/* Mobile Language Menu */}
       {isLanguageMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
+        <div data-testid="language-menu-mobile" className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
           <div className="container mx-auto px-4 py-2">
             <div className="flex flex-col space-y-2 py-2">
               {locales.map((loc) => (
