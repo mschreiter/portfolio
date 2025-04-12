@@ -15,9 +15,12 @@
   },
   "reporters": [
     "default",
-    ["jest-junit", {
-      "outputDirectory": "coverage",
-      "outputName": "jest-coverage.xml"
-    }]
+    [
+      "jest-junit",
+      {
+        "outputDirectory": "coverage",
+        "outputName": "jest-coverage.xml"
+      }
+    ]
   ]
 }

@@ -2,6 +2,7 @@
 
 This project is built using the following technologies:
 
+- **Engine**: [Bun](bun.sh)
 - **Framework**: [Next.js](https://nextjs.org) (v15.3.0)
 - **Language**: TypeScript (v5)
 - **Styling**: TailwindCSS (v4)
