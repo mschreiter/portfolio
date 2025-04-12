@@ -1,43 +1,51 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import HomePage from '../page';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import HomePage from "../page";
 
 // Mock the translations
-jest.mock('next-intl', () => ({
+jest.mock("next-intl", () => ({
   useTranslations: () => (key: string) => {
     const translations: Record<string, string> = {
-      'hero.greeting': 'Hi, I\'m',
-      'hero.name': 'Maximilian Schreiter',
-      'hero.title': 'Full-Stack Developer & AI Enthusiast',
-      'hero.description': 'I create engaging web experiences with modern technologies.',
-      'hero.cta': 'View My Work',
-      'about.title': 'About Me',
-      'about.description': 'Software engineer with a passion for creating elegant solutions.',
-      'about.button': 'Learn More',
-      'skills.title': 'My Skills',
-      'skills.description': 'I specialize in full-stack development.',
-      'skills.cta': 'See All Skills',
-      'contact.title': 'Let\'s Connect',
-      'contact.description': 'Interested in working together?',
-      'contact.button': 'Contact Me'
+      "hero.greeting": "Hi, I'm",
+      "hero.name": "Maximilian Schreiter",
+      "hero.title": "Full-Stack Developer & AI Enthusiast",
+      "hero.description":
+        "I create engaging web experiences with modern technologies.",
+      "hero.cta": "View My Work",
+      "about.title": "About Me",
+      "about.description":
+        "Software engineer with a passion for creating elegant solutions.",
+      "about.button": "Learn More",
+      "skills.title": "My Skills",
+      "skills.description": "I specialize in full-stack development.",
+      "skills.cta": "See All Skills",
+      "contact.title": "Let's Connect",
+      "contact.description": "Interested in working together?",
+      "contact.button": "Contact Me",
     };
-    
+
     // Simple lookup in translations object
     return translations[key] || key;
-  }
+  },
 }));
 
 // Mock next/image
-jest.mock('next/image', () => ({
+jest.mock("next/image", () => ({
   __esModule: true,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  default: ({ src, alt, width, height, className }: Record<string, unknown>) => (
+
+  default: ({
+    src,
+    alt,
+    width,
+    height,
+    className,
+  }: Record<string, unknown>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img 
-      src={src as string} 
-      alt={alt as string} 
-      width={width as number} 
-      height={height as number} 
+    <img
+      src={src as string}
+      alt={alt as string}
+      width={width as number}
+      height={height as number}
       className={className as string}
       data-testid="mock-image"
     />
@@ -45,33 +53,38 @@ jest.mock('next/image', () => ({
 }));
 
 // Mock components
-jest.mock('@/components/Section', () => ({
+jest.mock("@/components/Section", () => ({
   __esModule: true,
-  default: ({ 
-    id, 
-    children, 
-    className 
-  }: { 
-    id: string; 
-    children: React.ReactNode; 
-    className?: string 
+  default: ({
+    id,
+    children,
+    className,
+  }: {
+    id: string;
+    children: React.ReactNode;
+    className?: string;
   }) => (
-    <section id={id} className={className} data-testid={`section-${id}`}>
+    <section
+      id={id}
+      className={className}
+      data-testid={`section-${id}`}
+      role="region"
+    >
       {children}
     </section>
   ),
 }));
 
-jest.mock('@/components/Button', () => ({
+jest.mock("@/components/Button", () => ({
   __esModule: true,
-  default: ({ 
-    children, 
-    href, 
-    variant 
-  }: { 
-    children: React.ReactNode; 
-    href?: string; 
-    variant?: string 
+  default: ({
+    children,
+    href,
+    variant,
+  }: {
+    children: React.ReactNode;
+    href?: string;
+    variant?: string;
   }) => (
     <a href={href} className={variant} data-testid="button">
       {children}
@@ -79,16 +92,16 @@ jest.mock('@/components/Button', () => ({
   ),
 }));
 
-jest.mock('@/components/SkillCard', () => ({
+jest.mock("@/components/SkillCard", () => ({
   __esModule: true,
-  default: ({ 
-    title, 
-    icon, 
-    skills 
-  }: { 
-    title: string; 
-    icon: React.ReactNode; 
-    skills: string[] 
+  default: ({
+    title,
+    icon,
+    skills,
+  }: {
+    title: string;
+    icon: React.ReactNode;
+    skills: string[];
   }) => (
     <div data-testid={`skill-card-${title}`}>
       {icon}
@@ -102,7 +115,7 @@ jest.mock('@/components/SkillCard', () => ({
   ),
 }));
 
-jest.mock('@/components/icons/SkillIcons', () => ({
+jest.mock("@/components/icons/SkillIcons", () => ({
   FrontendIcon: () => <span data-testid="icon-frontend">FrontendIcon</span>,
   BackendIcon: () => <span data-testid="icon-backend">BackendIcon</span>,
   DatabaseIcon: () => <span data-testid="icon-database">DatabaseIcon</span>,
@@ -110,52 +123,69 @@ jest.mock('@/components/icons/SkillIcons', () => ({
   ToolsIcon: () => <span data-testid="icon-tools">ToolsIcon</span>,
 }));
 
-// Mock useEffect to avoid animations
-jest.spyOn(React, 'useEffect').mockImplementation(f => f());
+// We'll handle useEffect in the component as is
 
-describe('HomePage', () => {
+describe("HomePage", () => {
   beforeEach(() => {
-    Object.defineProperty(window, 'matchMedia', {
-      value: jest.fn(() => ({
+    // Setup window.matchMedia as a writable property
+    if (window.matchMedia) {
+      delete Object.getOwnPropertyDescriptor(window, "matchMedia");
+    }
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      configurable: true,
+      value: jest.fn().mockImplementation((query) => ({
         matches: false,
+        media: query,
+        onchange: null,
         addListener: jest.fn(),
         removeListener: jest.fn(),
       })),
     });
   });
 
-  it('renders hero section with name and title', () => {
+  it("renders hero section with name and title", () => {
     render(<HomePage />);
-    
-    expect(screen.getByText('Maximilian Schreiter')).toBeInTheDocument();
-    expect(screen.getByText('Full-Stack Developer & AI Enthusiast')).toBeInTheDocument();
-    expect(screen.getByTestId('section-hero')).toBeInTheDocument();
+
+    expect(screen.getByText("Maximilian Schreiter")).toBeInTheDocument();
+    expect(
+      screen.getByText("Full-Stack Developer & AI Enthusiast"),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("section-hero")).toBeInTheDocument();
   });
 
-  it('renders about section', () => {
+  it("renders about section", () => {
     render(<HomePage />);
-    
-    expect(screen.getByText('About Me')).toBeInTheDocument();
-    expect(screen.getByTestId('section-about')).toBeInTheDocument();
+
+    expect(screen.getByText("About Me")).toBeInTheDocument();
+    expect(screen.getByTestId("section-about")).toBeInTheDocument();
   });
 
-  it('renders skills section with skill cards', () => {
+  it("renders skills section with skill cards", () => {
     render(<HomePage />);
-    
-    expect(screen.getByText('My Skills')).toBeInTheDocument();
-    expect(screen.getByTestId('section-skills')).toBeInTheDocument();
-    
-    expect(screen.getByTestId('skill-card-Frontend')).toBeInTheDocument();
-    expect(screen.getByTestId('skill-card-Backend')).toBeInTheDocument();
-    expect(screen.getByTestId('skill-card-Databases')).toBeInTheDocument();
-    expect(screen.getByTestId('skill-card-DevOps')).toBeInTheDocument();
-    expect(screen.getByTestId('skill-card-Tools')).toBeInTheDocument();
+
+    expect(screen.getByText("My Skills")).toBeInTheDocument();
+    expect(screen.getByTestId("section-skills")).toBeInTheDocument();
+
+    expect(screen.getByTestId("skill-card-Frontend")).toBeInTheDocument();
+    expect(screen.getByTestId("skill-card-Backend")).toBeInTheDocument();
+    expect(screen.getByTestId("skill-card-Databases")).toBeInTheDocument();
+    expect(screen.getByTestId("skill-card-DevOps")).toBeInTheDocument();
+    expect(screen.getByTestId("skill-card-Tools")).toBeInTheDocument();
   });
 
-  it('renders contact section', () => {
+  it("renders contact section", () => {
     render(<HomePage />);
-    
-    expect(screen.getByText('Let\'s Connect')).toBeInTheDocument();
-    expect(screen.getByTestId('section-contact')).toBeInTheDocument();
+
+    expect(screen.getByText("Let's Connect")).toBeInTheDocument();
+    expect(screen.getByTestId("section-contact")).toBeInTheDocument();
+  });
+
+  it("contains the expected number of sections", () => {
+    render(<HomePage />);
+
+    // Check that we have all the main sections
+    const sections = screen.getAllByRole("region");
+    expect(sections.length).toBe(4); // hero, about, skills, contact
   });
 });
