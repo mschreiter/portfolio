@@ -23,6 +23,130 @@
       "button": "Contact Me"
     }
   },
+  "AboutPage": {
+    "title": "About Me",
+    "subtitle": "Full-Stack Developer with a passion for building elegant solutions",
+    "bio": {
+      "title": "Who I Am",
+      "intro": "I'm a software engineer with {years} years of professional experience, focusing on building scalable and maintainable web applications.",
+      "motivation": "I'm passionate about creating software that solves real problems and delivers exceptional user experiences. I enjoy working at the intersection of technology and creativity.",
+      "approach": "My development approach emphasizes clean code, thoughtful architecture, and attention to detail. I believe in building systems that are not just functional, but also maintainable and adaptable to future needs.",
+      "experienceBtn": "My Experience",
+      "contactBtn": "Contact Me"
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "subtitle": "Where I've worked and what I've done",
+      "job": {
+        "title": "Software Engineer",
+        "company": "Mid-sized Service Provider Company",
+        "period": "2022 - Present",
+        "description": "Working on full-stack web applications using modern JavaScript frameworks and Java-based backend systems. Collaborating in cross-functional teams to deliver high-quality software solutions for various clients."
+      }
+    },
+    "education": {
+      "title": "Education",
+      "subtitle": "My academic background",
+      "degree": {
+        "name": "Bachelor of Science in Computer Science",
+        "institution": "University Kassel, Germany",
+        "grade": "Grade: 2.1",
+        "period": "Graduated",
+        "description": "Core studies included algorithms, data structures, software engineering principles, database systems, and web development. Completed coursework in both theoretical computer science and practical application development."
+      }
+    },
+    "cta": {
+      "title": "Interested in My Skills?",
+      "description": "Check out my skills page to see what technologies I work with, or get in touch to discuss how we might collaborate.",
+      "skillsBtn": "View My Skills",
+      "contactBtn": "Contact Me"
+    }
+  },
+  "SkillsPage": {
+    "title": "Skills & Expertise",
+    "subtitle": "A comprehensive overview of my technical capabilities",
+    "intro": "With a focus on full-stack development, I've cultivated expertise in a diverse range of technologies. My approach emphasizes adaptability and continuous learning, allowing me to select the right tools for each unique project requirement.",
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Building responsive, accessible, and performant user interfaces is my specialty. I create engaging web experiences with modern frameworks and libraries.",
+      "frameworks": {
+        "title": "Frameworks & Libraries",
+        "react": "Component-based UI development with hooks, context, and state management",
+        "nextjs": "Server-side rendering, static site generation, and optimized React applications",
+        "angular": "Enterprise-grade applications with TypeScript and component architecture"
+      },
+      "styling": {
+        "title": "Styling & UI",
+        "tailwind": "Utility-first CSS framework for rapid UI development with responsive design",
+        "styledComponents": "Component-level styles with CSS-in-JS for dynamic theming"
+      }
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Creating robust server-side applications with focus on performance, security, and scalability.",
+      "node": {
+        "title": "JavaScript Runtime",
+        "nodejs": "Building scalable network applications with event-driven architecture",
+        "express": "Fast, unopinionated web framework for robust API development",
+        "bun": "Modern JavaScript runtime with enhanced performance for server-side applications"
+      },
+      "java": {
+        "title": "Java Ecosystem",
+        "spring": "Enterprise-grade applications with dependency injection and microservices",
+        "core": "Object-oriented programming with strong type system and platform independence"
+      }
+    },
+    "database": {
+      "title": "Database Technologies",
+      "description": "Designing and implementing efficient data storage solutions with focus on data integrity and query performance.",
+      "sql": {
+        "title": "SQL Databases",
+        "postgresql": "Open-source relational database with robust features and reliability"
+      },
+      "nosql": {
+        "title": "NoSQL Databases",
+        "mongodb": "Document-oriented database for flexible schema design and scalability"
+      }
+    },
+    "devops": {
+      "title": "DevOps & Deployment",
+      "description": "Streamlining development and deployment processes with automation and containerization.",
+      "container": {
+        "title": "Containerization",
+        "docker": "Application containerization for consistent development and deployment environments"
+      },
+      "ci": {
+        "title": "CI/CD",
+        "github": "Workflow automation for testing, building, and deploying applications",
+        "gitlab": "Continuous integration and delivery pipelines for code quality and deployment"
+      }
+    },
+    "tools": {
+      "title": "Tools & Testing",
+      "description": "Ensuring code quality and application reliability with comprehensive testing and development tools.",
+      "testing": {
+        "title": "Testing Frameworks",
+        "jest": "JavaScript testing framework with snapshot testing and mocking capabilities",
+        "junit": "Java testing framework for unit and integration testing"
+      },
+      "cloud": {
+        "title": "Cloud Services",
+        "aws": "Cloud computing services for scalable and reliable application hosting"
+      }
+    },
+    "stats": {
+      "title": "Experience at a Glance",
+      "years": "Years Experience",
+      "projects": "Projects Completed",
+      "technologies": "Core Technologies"
+    },
+    "cta": {
+      "title": "Ready to Start a Project Together?",
+      "description": "I'm always interested in new challenges and collaborations. Get in touch to discuss how my skills can contribute to your next project.",
+      "contactBtn": "Contact Me",
+      "aboutBtn": "Learn More About Me"
+    }
+  },
   "Header": {
     "home": "Home",
     "about": "About",

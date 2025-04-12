@@ -23,6 +23,130 @@
       "button": "Kontakt aufnehmen"
     }
   },
+  "AboutPage": {
+    "title": "Über Mich",
+    "subtitle": "Full-Stack Entwickler mit Leidenschaft für elegante Lösungen",
+    "bio": {
+      "title": "Wer ich bin",
+      "intro": "Ich bin ein Software-Entwickler mit {years} Jahren Berufserfahrung und fokussiere mich auf die Entwicklung skalierbarer und wartbarer Webanwendungen.",
+      "motivation": "Meine Leidenschaft liegt darin, Software zu erstellen, die reale Probleme löst und außergewöhnliche Benutzererfahrungen bietet. Ich arbeite gerne an der Schnittstelle von Technologie und Kreativität.",
+      "approach": "Mein Entwicklungsansatz betont sauberen Code, durchdachte Architektur und Liebe zum Detail. Ich glaube an den Aufbau von Systemen, die nicht nur funktional sind, sondern auch wartbar und an zukünftige Anforderungen anpassbar.",
+      "experienceBtn": "Meine Erfahrung",
+      "contactBtn": "Kontakt aufnehmen"
+    },
+    "experience": {
+      "title": "Berufserfahrung",
+      "subtitle": "Wo ich gearbeitet habe und was ich gemacht habe",
+      "job": {
+        "title": "Software-Entwickler",
+        "company": "Mittelständisches Dienstleistungsunternehmen",
+        "period": "2022 - Heute",
+        "description": "Entwicklung von Full-Stack-Webanwendungen mit modernen JavaScript-Frameworks und Java-basierten Backend-Systemen. Zusammenarbeit in funktionsübergreifenden Teams zur Bereitstellung hochwertiger Softwarelösungen für verschiedene Kunden."
+      }
+    },
+    "education": {
+      "title": "Ausbildung",
+      "subtitle": "Mein akademischer Hintergrund",
+      "degree": {
+        "name": "Bachelor of Science in Informatik",
+        "institution": "Universität Kassel, Deutschland",
+        "grade": "Note: 2,1",
+        "period": "Abgeschlossen",
+        "description": "Kernstudien umfassten Algorithmen, Datenstrukturen, Software-Engineering-Prinzipien, Datenbanksysteme und Webentwicklung. Absolvierte Kurse in theoretischer Informatik und praktischer Anwendungsentwicklung."
+      }
+    },
+    "cta": {
+      "title": "Interesse an meinen Fähigkeiten?",
+      "description": "Schauen Sie sich meine Skills-Seite an, um zu sehen, mit welchen Technologien ich arbeite, oder nehmen Sie Kontakt auf, um zu besprechen, wie wir zusammenarbeiten könnten.",
+      "skillsBtn": "Meine Fähigkeiten",
+      "contactBtn": "Kontakt aufnehmen"
+    }
+  },
+  "SkillsPage": {
+    "title": "Fähigkeiten & Expertise",
+    "subtitle": "Ein umfassender Überblick über meine technischen Fähigkeiten",
+    "intro": "Mit Fokus auf Full-Stack-Entwicklung habe ich Fachwissen in einer Vielzahl von Technologien aufgebaut. Mein Ansatz betont Anpassungsfähigkeit und kontinuierliches Lernen, was mir ermöglicht, die richtigen Werkzeuge für jede einzigartige Projektanforderung auszuwählen.",
+    "frontend": {
+      "title": "Frontend-Entwicklung",
+      "description": "Die Entwicklung responsiver, zugänglicher und leistungsstarker Benutzeroberflächen ist meine Spezialität. Ich erstelle ansprechende Web-Erlebnisse mit modernen Frameworks und Bibliotheken.",
+      "frameworks": {
+        "title": "Frameworks & Bibliotheken",
+        "react": "Komponentenbasierte UI-Entwicklung mit Hooks, Context und State Management",
+        "nextjs": "Server-Side Rendering, statische Seitengenerierung und optimierte React-Anwendungen",
+        "angular": "Unternehmensanwendungen mit TypeScript und Komponentenarchitektur"
+      },
+      "styling": {
+        "title": "Styling & UI",
+        "tailwind": "Utility-First CSS-Framework für schnelle UI-Entwicklung mit responsivem Design",
+        "styledComponents": "Komponenten-Level-Styles mit CSS-in-JS für dynamisches Theming"
+      }
+    },
+    "backend": {
+      "title": "Backend-Entwicklung",
+      "description": "Entwicklung robuster serverseitiger Anwendungen mit Fokus auf Leistung, Sicherheit und Skalierbarkeit.",
+      "node": {
+        "title": "JavaScript-Runtime",
+        "nodejs": "Aufbau skalierbarer Netzwerkanwendungen mit ereignisgesteuerter Architektur",
+        "express": "Schnelles, unvoreingenommenes Web-Framework für robuste API-Entwicklung",
+        "bun": "Moderne JavaScript-Laufzeitumgebung mit verbesserter Leistung für serverseitige Anwendungen"
+      },
+      "java": {
+        "title": "Java-Ökosystem",
+        "spring": "Unternehmensanwendungen mit Dependency Injection und Microservices",
+        "core": "Objektorientierte Programmierung mit starkem Typsystem und Plattformunabhängigkeit"
+      }
+    },
+    "database": {
+      "title": "Datenbanktechnologien",
+      "description": "Entwurf und Implementierung effizienter Datenspeicherlösungen mit Fokus auf Datenintegrität und Abfrageleistung.",
+      "sql": {
+        "title": "SQL-Datenbanken",
+        "postgresql": "Open-Source-Relationale Datenbank mit robusten Funktionen und Zuverlässigkeit"
+      },
+      "nosql": {
+        "title": "NoSQL-Datenbanken",
+        "mongodb": "Dokumentenorientierte Datenbank für flexible Schemagestaltung und Skalierbarkeit"
+      }
+    },
+    "devops": {
+      "title": "DevOps & Deployment",
+      "description": "Rationalisierung von Entwicklungs- und Bereitstellungsprozessen mit Automatisierung und Containerisierung.",
+      "container": {
+        "title": "Containerisierung",
+        "docker": "Anwendungscontainerisierung für konsistente Entwicklungs- und Bereitstellungsumgebungen"
+      },
+      "ci": {
+        "title": "CI/CD",
+        "github": "Workflow-Automatisierung für Testen, Bauen und Bereitstellen von Anwendungen",
+        "gitlab": "Kontinuierliche Integrations- und Bereitstellungspipelines für Codequalität und Deployment"
+      }
+    },
+    "tools": {
+      "title": "Tools & Testing",
+      "description": "Sicherstellung von Codequalität und Anwendungszuverlässigkeit mit umfassenden Test- und Entwicklungstools.",
+      "testing": {
+        "title": "Test-Frameworks",
+        "jest": "JavaScript-Test-Framework mit Snapshot-Testing und Mocking-Fähigkeiten",
+        "junit": "Java-Test-Framework für Unit- und Integrationstests"
+      },
+      "cloud": {
+        "title": "Cloud-Dienste",
+        "aws": "Cloud-Computing-Dienste für skalierbare und zuverlässige Anwendungshosting"
+      }
+    },
+    "stats": {
+      "title": "Erfahrung auf einen Blick",
+      "years": "Jahre Erfahrung",
+      "projects": "Abgeschlossene Projekte",
+      "technologies": "Kerntechnologien"
+    },
+    "cta": {
+      "title": "Bereit, ein Projekt gemeinsam zu starten?",
+      "description": "Ich bin immer an neuen Herausforderungen und Kooperationen interessiert. Nehmen Sie Kontakt auf, um zu besprechen, wie meine Fähigkeiten zu Ihrem nächsten Projekt beitragen können.",
+      "contactBtn": "Kontakt aufnehmen",
+      "aboutBtn": "Mehr über mich erfahren"
+    }
+  },
   "Header": {
     "home": "Startseite",
     "about": "Über mich",
