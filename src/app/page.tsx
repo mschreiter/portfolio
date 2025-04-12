@@ -1,117 +1,148 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import Section from "@/components/Section";
+import Button from "@/components/Button";
+import SkillCard from "@/components/SkillCard";
+import { FrontendIcon, BackendIcon, DatabaseIcon, DevOpsIcon, ToolsIcon } from "@/components/icons/SkillIcons";
+
+// Placeholder image URL - Replace with your actual image
+const PLACEHOLDER_IMAGE = "https://via.placeholder.com/400x400";
 
 const HomePage = () => {
   const t = useTranslations("HomePage");
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // Animate content on load
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <h1>{t("title")}</h1>
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <Link
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="/about"
-          >
-            About Me
-          </Link>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <Section 
+        id="hero" 
+        fullHeight 
+        className="flex flex-col justify-center relative overflow-hidden"
+      >
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className={`space-y-6 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <p className="text-primary dark:text-primary-dark font-medium">{t("hero.greeting")}</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">{t("hero.name")}</h1>
+            <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300">{t("hero.title")}</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-md">
+              {t("hero.description")}
+            </p>
+            <div className="pt-4 flex flex-wrap gap-4">
+              <Button href="#work" variant="primary">
+                {t("hero.cta")}
+              </Button>
+              <Button href="/contact" variant="outline">
+                {t("contact.button")}
+              </Button>
+            </div>
+          </div>
+          
+          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+              <div className="absolute inset-0 bg-primary/20 dark:bg-primary-dark/20 rounded-full blur-3xl"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-full border-4 border-white dark:border-gray-800 shadow-lg">
+                  <Image
+                    src={PLACEHOLDER_IMAGE}
+                    alt={t("hero.name")}
+                    width={400}
+                    height={400}
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5L12 19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </Section>
+
+      {/* About Me Section */}
+      <Section id="about" className="bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">{t("about.title")}</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            {t("about.description")}
+          </p>
+          <Button href="/about" variant="secondary">
+            {t("about.button")}
+          </Button>
+        </div>
+      </Section>
+
+      {/* Skills Section */}
+      <Section id="skills">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">{t("skills.title")}</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            {t("skills.description")}
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SkillCard
+            title="Frontend"
+            icon={<FrontendIcon className="w-6 h-6" />}
+            skills={['React', 'Angular', 'Next.js', 'Tailwind CSS', 'Styled Components']}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <SkillCard
+            title="Backend"
+            icon={<BackendIcon className="w-6 h-6" />}
+            skills={['Node.js', 'Bun', 'Java', 'Spring Boot', 'Express']}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <SkillCard
+            title="Databases"
+            icon={<DatabaseIcon className="w-6 h-6" />}
+            skills={['PostgreSQL', 'MongoDB']}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <SkillCard
+            title="DevOps"
+            icon={<DevOpsIcon className="w-6 h-6" />}
+            skills={['Docker', 'GitHub Actions', 'GitLab CI/CD', 'Ansible']}
+          />
+          <SkillCard
+            title="Tools"
+            icon={<ToolsIcon className="w-6 h-6" />}
+            skills={['Jest', 'JUnit Jupiter', 'AWS']}
+          />
+        </div>
+        
+        <div className="text-center mt-10">
+          <Button href="/skills" variant="outline">
+            {t("skills.cta")}
+          </Button>
+        </div>
+      </Section>
+
+      {/* Contact Section */}
+      <Section id="contact" className="bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-md mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">{t("contact.title")}</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            {t("contact.description")}
+          </p>
+          <Button href="/contact" variant="primary">
+            {t("contact.button")}
+          </Button>
+        </div>
+      </Section>
+    </>
   );
 };
 

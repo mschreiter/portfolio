@@ -6,9 +6,11 @@ import { LocaleProvider } from '@/providers/LocaleProvider';
 
 // Mock next/link
 jest.mock('next/link', () => {
-  return ({ children, href }: { children: React.ReactNode; href: string }) => {
+  const MockLink = ({ children, href }: { children: React.ReactNode; href: string }) => {
     return <a href={href}>{children}</a>;
   };
+  MockLink.displayName = 'MockLink'; // Add display name
+  return MockLink;
 });
 
 // Mock next-intl

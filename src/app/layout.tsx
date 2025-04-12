@@ -6,6 +6,7 @@ import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LocaleProvider } from "@/providers/LocaleProvider";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,10 +35,13 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <NextIntlClientProvider locale={locale}>
           <ThemeProvider>
             <LocaleProvider>
-              <Header />
-              <main className="min-h-screen">
-                {children}
-              </main>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
             </LocaleProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
