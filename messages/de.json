@@ -1,6 +1,27 @@
 {
   "HomePage": {
-    "title": "Hallo Welt! Das ist international"
+    "hero": {
+      "greeting": "Hallo, ich bin",
+      "name": "Maximilian Schreiter",
+      "title": "Full-Stack Entwickler & KI-Enthusiast",
+      "description": "Ich erstelle ansprechende Web-Erlebnisse mit modernen Technologien.",
+      "cta": "Meine Arbeit ansehen"
+    },
+    "about": {
+      "title": "Über Mich",
+      "description": "Software-Ingenieur mit einer Leidenschaft für elegante Lösungen komplexer Probleme. Mein Ansatz kombiniert technisches Know-how mit kreativem Problemlösen.",
+      "button": "Mehr erfahren"
+    },
+    "skills": {
+      "title": "Meine Fähigkeiten",
+      "description": "Ich bin spezialisiert auf Full-Stack-Entwicklung mit Erfahrung in modernen Frameworks und Tools.",
+      "cta": "Alle Fähigkeiten anzeigen"
+    },
+    "contact": {
+      "title": "Kontaktieren Sie mich",
+      "description": "Interesse an einer Zusammenarbeit? Zögern Sie nicht, mich zu kontaktieren.",
+      "button": "Kontakt aufnehmen"
+    }
   },
   "Header": {
     "home": "Startseite",
@@ -12,5 +33,9 @@
   "Theme": {
     "dark": "Dunkelmodus",
     "light": "Hellmodus"
+  },
+  "Footer": {
+    "rights": "Alle Rechte vorbehalten",
+    "madeWith": "Erstellt mit Next.js"
   }
 }
