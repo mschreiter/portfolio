@@ -52,6 +52,16 @@ jest.mock("next/image", () => ({
   ),
 }));
 
+// Mock the useAnimateOnScroll hook
+jest.mock("@/hooks/useAnimateOnScroll", () => ({
+  __esModule: true,
+  default: () => ({
+    ref: { current: null },
+    isVisible: true,
+    animationClass: "animate-test",
+  }),
+}));
+
 // Mock components
 jest.mock("@/components/Section", () => ({
   __esModule: true,
@@ -68,6 +78,28 @@ jest.mock("@/components/Section", () => ({
       id={id}
       className={className}
       data-testid={`section-${id}`}
+      role="region"
+    >
+      {children}
+    </section>
+  ),
+}));
+
+jest.mock("@/components/ParallaxSection", () => ({
+  __esModule: true,
+  default: ({
+    id,
+    children,
+    className,
+  }: {
+    id: string;
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <section
+      id={id}
+      className={className}
+      data-testid={`parallax-section-${id}`}
       role="region"
     >
       {children}
@@ -98,19 +130,26 @@ jest.mock("@/components/SkillCard", () => ({
     title,
     icon,
     skills,
+    description,
   }: {
     title: string;
     icon: React.ReactNode;
     skills: string[];
+    description?: string;
   }) => (
     <div data-testid={`skill-card-${title}`}>
-      {icon}
-      <h3>{title}</h3>
-      <ul>
-        {skills.map((skill: string, i: number) => (
-          <li key={i}>{skill}</li>
-        ))}
-      </ul>
+      <div className="front-side">
+        {icon}
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
+      <div className="back-side">
+        <ul>
+          {skills.map((skill: string, i: number) => (
+            <li key={i}>{skill}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   ),
 }));
@@ -122,8 +161,6 @@ jest.mock("@/components/icons/SkillIcons", () => ({
   DevOpsIcon: () => <span data-testid="icon-devops">DevOpsIcon</span>,
   ToolsIcon: () => <span data-testid="icon-tools">ToolsIcon</span>,
 }));
-
-// We'll handle useEffect in the component as is
 
 describe("HomePage", () => {
   beforeEach(() => {
@@ -158,7 +195,7 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(screen.getByText("About Me")).toBeInTheDocument();
-    expect(screen.getByTestId("section-about")).toBeInTheDocument();
+    expect(screen.getByTestId("parallax-section-about")).toBeInTheDocument();
   });
 
   it("renders skills section with skill cards", () => {
@@ -178,13 +215,13 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(screen.getByText("Let's Connect")).toBeInTheDocument();
-    expect(screen.getByTestId("section-contact")).toBeInTheDocument();
+    expect(screen.getByTestId("parallax-section-contact")).toBeInTheDocument();
   });
 
   it("contains the expected number of sections", () => {
     render(<HomePage />);
 
-    // Check that we have all the main sections
+    // We now have 2 regular sections and 2 parallax sections
     const sections = screen.getAllByRole("region");
     expect(sections.length).toBe(4); // hero, about, skills, contact
   });
