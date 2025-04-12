@@ -13,6 +13,7 @@ This project is built using the following technologies:
 
 ## Additional Tools
 
+- **next-intl**: For internationalization
 - **PostCSS**: Used with TailwindCSS
 - **gh-pages**: For deployment to GitHub Pages
 
