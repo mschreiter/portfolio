@@ -7,6 +7,7 @@ import { LocaleProvider } from "@/providers/LocaleProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import I18nProvider from "@/providers/I18nProvider";
+import CustomHead from "@/components/CustomHead";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <ThemeProvider>
           <LocaleProvider>
             <I18nProvider initialLocale={locale} initialMessages={messages}>
+              <CustomHead />
               <div className="flex flex-col min-h-screen">
                 <Header />
                 <main className="flex-grow">{children}</main>
