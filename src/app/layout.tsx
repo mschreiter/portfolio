@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LocaleProvider } from "@/providers/LocaleProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import I18nProvider from "@/providers/I18nProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,32 +19,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio of Maximilian Schreiter",
+  title: "Maximilian Schreiter | Portfolio",
   description:
     "Portfolio of Maximilian Schreiter. A software engineer with a focus on web development.",
 };
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const locale = await getLocale();
+  // Get initial locale from server
+  const serverLocale = await getLocale();
+  const locale = serverLocale as "en" | "de";
+
+  // Get messages for the initial locale
+  const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider locale={locale}>
-          <ThemeProvider>
-            <LocaleProvider>
+        <ThemeProvider>
+          <LocaleProvider>
+            <I18nProvider initialLocale={locale} initialMessages={messages}>
               <div className="flex flex-col min-h-screen">
                 <Header />
-                <main className="flex-grow">
-                  {children}
-                </main>
+                <main className="flex-grow">{children}</main>
                 <Footer />
               </div>
-            </LocaleProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+            </I18nProvider>
+          </LocaleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,13 +1,12 @@
 import { getRequestConfig } from "next-intl/server";
 import { defaultLocale } from "./settings";
 
+// For static sites we just use the default locale for server rendering
+// and handle actual locale switching client-side
 const requestConfig = getRequestConfig(async () => {
-  // For SSG, we need to handle the locale detection client-side
-  const locale = defaultLocale;
-
   return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    locale: defaultLocale,
+    messages: (await import(`../../messages/${defaultLocale}.json`)).default,
   };
 });
 
