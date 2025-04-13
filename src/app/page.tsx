@@ -16,8 +16,8 @@ import {
   ToolsIcon,
 } from "@/components/icons/SkillIcons";
 
-// Placeholder image URL - Replace with your actual image
-const PLACEHOLDER_IMAGE = "https://via.placeholder.com/400x400";
+// Replace the placeholder image URL with the relative path to the image in the public folder
+const PLACEHOLDER_IMAGE = "/ghibli-me.png";
 
 const HomePage = () => {
   const t = useTranslations("HomePage");

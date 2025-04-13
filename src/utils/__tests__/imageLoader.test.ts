@@ -16,15 +16,15 @@ describe("imageLoader", () => {
     Object.defineProperty(process.env, "NODE_ENV", {
       value: "production",
     });
-    const result = imageLoader({ src: "/test-image.svg" });
-    expect(result).toBe("/portfolio/test-image.svg");
+    const result = imageLoader({ src: "/test-image.svg", width: 100 });
+    expect(result).toBe("/portfolio/test-image.svg?w=100");
   });
 
   it("should not prepend the basePath in development", () => {
     Object.defineProperty(process.env, "NODE_ENV", {
       value: "development",
     });
-    const result = imageLoader({ src: "/test-image.svg" });
-    expect(result).toBe("/test-image.svg");
+    const result = imageLoader({ src: "/test-image.svg", width: 100 });
+    expect(result).toBe("/test-image.svg?w=100");
   });
 });

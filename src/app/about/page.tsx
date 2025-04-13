@@ -9,7 +9,7 @@ import useAnimateOnScroll from "@/hooks/useAnimateOnScroll";
 import Button from "@/components/Button";
 
 // Placeholder image URL - Replace with your actual image
-const PLACEHOLDER_IMAGE = "https://via.placeholder.com/400x400";
+const PLACEHOLDER_IMAGE = "/ghibli-me.png";
 
 const AboutPage = () => {
   const t = useTranslations("AboutPage");
