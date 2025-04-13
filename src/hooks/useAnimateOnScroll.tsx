@@ -17,7 +17,7 @@ export default function useAnimateOnScroll({
   threshold = 0.2,
   once = true,
 }: UseAnimateOnScrollOptions = {}) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
