@@ -8,7 +8,7 @@ const repoName = ""; // Replace with your repository name
 const nextConfig: NextConfig = {
   output: "export",
   basePath: isProd ? `${repoName}` : "",
-  assetPrefix: isProd ? `${repoName}` : "",
+  assetPrefix: isProd ? `${repoName}/` : "",
   reactStrictMode: true,
   images: {
     loader: "custom",
