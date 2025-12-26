@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const isProd = process.env.NODE_ENV === "production";
 
-const repoName = "portfolio"; // Replace with your repository name
+const repoName = ""; // Replace with your repository name
 
 const nextConfig: NextConfig = {
   output: "export",
