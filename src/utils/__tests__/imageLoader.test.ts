@@ -17,7 +17,7 @@ describe("imageLoader", () => {
       value: "production",
     });
     const result = imageLoader({ src: "/test-image.svg", width: 100 });
-    expect(result).toBe("/portfolio/test-image.svg?w=100");
+    expect(result).toBe("/test-image.svg?w=100");
   });
 
   it("should not prepend the basePath in development", () => {

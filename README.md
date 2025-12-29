@@ -13,7 +13,7 @@ This is a responsive personal portfolio website built with Next.js and TailwindC
 
 ## Technology Stack
 
-- **Framework**: [Next.js](https://nextjs.org) (v15.3.0)
+- **Framework**: [Next.js](https://nextjs.org) (v16)
 - **Runtime**: [Bun](https://bun.sh)
 - **Styling**: [TailwindCSS](https://tailwindcss.com) (v4)
 - **Testing**: Jest with Testing Library

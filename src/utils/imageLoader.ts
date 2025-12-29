@@ -5,7 +5,7 @@ const imageLoader = ({
   src: string;
   width: number;
 }): string => {
-  const basePath = process.env.NODE_ENV === "production" ? "/portfolio" : "";
+  const basePath = "";
   return `${basePath}${src}?w=${width}`;
 };
 

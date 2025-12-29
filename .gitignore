@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Ignore conversation log to protect private information
 docs/conversation-log.md
+
+# idea
+.idea/
